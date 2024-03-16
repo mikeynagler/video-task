@@ -1,13 +1,17 @@
 .Display {
-    height: 60vh;
-    background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  background-color: #111;
+  position: relative;
 }
 
 .Display > video {
-    opacity: 0;
-    transition: .2s opacity;
+  opacity: 0;
+  transition: 0.2s opacity;
 }
 
 .Display[data-loading="false"] > video {
-    opacity: 1;
+  opacity: 1;
 }
