@@ -47,3 +47,25 @@
   right: -16px;
   cursor: ew-resize;
 }
+
+.indicator {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: 75px;
+  left: -25px;
+  width: 60px;
+  border-radius: 4px;
+  padding: 3px;
+  background-color: #70b7e6;
+  pointer-events: none;
+  .triangle {
+    position: absolute;
+    top: -6px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #70b7e6;
+  }
+}

@@ -1,13 +1,14 @@
 import { useContext, useEffect, useRef } from "react";
 import { videoContext } from "../../../context/videoContext";
-import "./Trimmer.css";
 import { IDragStatus } from "./Trimmer.types";
 import { TTarget } from "../../components/dragable/Draggable.types";
+import { formatTime } from "../../../utils/utils";
+import "./Trimmer.scss";
 
 const MIN_TRIM_WIDTH = 40;
 
 export const Trimmer = () => {
-  const { video, setStartTime, setEndTime, setIsOnTrim } =
+  const { video, setStartTime, setEndTime, setIsOnTrim, startTime, endTime } =
     useContext(videoContext);
   const gripRef = useRef<HTMLDivElement>(null);
   const spaceRef = useRef<HTMLDivElement>(null);
@@ -102,7 +103,6 @@ export const Trimmer = () => {
     if (!wrapRef.current || !dragRef.current.isOn) {
       return;
     }
-
     const diff = e.x - dragRef.current.x;
     let leftWidth = dragRef.current.startPosition;
     let width = dragRef.current.startWidth;
@@ -118,6 +118,7 @@ export const Trimmer = () => {
 
         if (leftWidth + width > wrapRef.current.offsetWidth) {
           width = dragRef.current.currWidth;
+          console.log("width", width);
           leftWidth = wrapRef.current.offsetWidth - width;
         }
 
@@ -174,8 +175,18 @@ export const Trimmer = () => {
       <div></div>
       <div ref={spaceRef}>
         <div ref={gripRef} className="grip" data-dir="drag">
-          <div data-dir="left"></div>
-          <div data-dir="right"></div>
+          <div data-dir="left">
+            <div className="indicator">
+              {formatTime(startTime)}
+              <div className="triangle" />
+            </div>
+          </div>
+          <div data-dir="right">
+            <div className="indicator">
+              {formatTime(endTime)}
+              <div className="triangle" />
+            </div>
+          </div>
         </div>
       </div>
       <div></div>
