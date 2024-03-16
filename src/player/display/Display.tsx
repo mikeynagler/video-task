@@ -34,13 +34,7 @@ export const Display = () => {
   return (
     <div className="Display" data-loading={!isOn}>
       <video ref={video} width="100%" height="100%" preload="auto">
-        <source
-          src={
-            // "https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
-            vid
-          }
-          type="video/mp4"
-        />
+        <source src={vid} type="video/mp4" />
       </video>
       <Controls />
     </div>
