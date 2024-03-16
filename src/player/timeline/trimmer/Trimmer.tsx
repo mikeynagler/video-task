@@ -118,7 +118,6 @@ export const Trimmer = () => {
 
         if (leftWidth + width > wrapRef.current.offsetWidth) {
           width = dragRef.current.currWidth;
-          console.log("width", width);
           leftWidth = wrapRef.current.offsetWidth - width;
         }
 
